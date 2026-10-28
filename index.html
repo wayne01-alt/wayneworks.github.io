@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wayne | Book Promotion & PCB Design</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --site-primary: #0F766E;
+  --site-on-primary: #FFFFFF;
+  --site-secondary: #102A43;
+  --site-on-secondary: #FFFFFF;
+  --site-background: #F4F7F8;
+  --site-on-background: #172B3A;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  --surface: light-dark(#FFFFFF, #17232D);
+  --surface-soft: light-dark(#E8F0F1, #20313D);
+  --text-muted: light-dark(#536777, #B3C1CA);
+  --line: light-dark(#D7E1E5, #344651);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
+.site-root { min-height: 100vh; width: 100%; background-color: var(--site-background); color: var(--site-on-background); border-radius: 0; overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; }
+.wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+header { position: sticky; top: 0; z-index: 10; background: light-dark(rgba(244,247,248,.94), rgba(15,25,33,.94)); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.brand { display: flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: -.03em; }
+.brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: calc(10px * var(--site-radius-scale)); color: var(--site-on-primary); background: var(--site-primary); }
+.brand-mark svg { width: 23px; height: 23px; }
+.nav-links { display: flex; gap: 26px; align-items: center; color: var(--text-muted); font-size: 14px; }
+.nav-links a:hover, .text-link:hover { color: var(--site-primary); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: calc(13px * var(--site-spacing-scale)) calc(19px * var(--site-spacing-scale)); border-radius: calc(10px * var(--site-radius-scale)); font-weight: 700; font-size: 14px; border: 1px solid transparent; cursor: pointer; transition: transform .18s, opacity .18s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--site-primary); color: var(--site-on-primary); }
+.btn-outline { border-color: var(--line); background: var(--surface); }
+.hero { position: relative; padding: clamp(70px, 10vw, 126px) 0 88px; background: var(--site-secondary); color: var(--site-on-secondary); }
+.hero:after { content: ""; position: absolute; right: -100px; top: -160px; width: 460px; height: 460px; border: 1px solid rgba(255,255,255,.14); border-radius: 50%; box-shadow: 0 0 0 55px rgba(255,255,255,.035), 0 0 0 110px rgba(255,255,255,.025); opacity: var(--site-decoration-opacity); pointer-events: none; }
+.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 58px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 9px; color: light-dark(#91E5D9, #91E5D9); text-transform: uppercase; letter-spacing: .13em; font-size: 11px; font-weight: 800; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #65D7C5; }
+h1,h2,h3,p { margin-top: 0; }
+h1 { max-width: 700px; margin: 20px 0; font-family: var(--site-font-heading); font-size: calc(clamp(42px, 6vw, 72px) * var(--site-heading-scale)); line-height: 1.04; letter-spacing: -.055em; }
+.hero p { max-width: 570px; font-size: 17px; line-height: 1.8; color: #D0DCE4; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hero .btn-outline { background: transparent; border-color: rgba(255,255,255,.3); color: white; }
+.hero-note { margin-top: 23px; font-size: 12px; color: #AEBFCB; }
+.board-card { background: #132F3B; border: 1px solid rgba(155,231,218,.25); border-radius: calc(22px * var(--site-radius-scale)); padding: 22px; box-shadow: 0 24px 70px rgba(0,0,0,.25); transform: rotate(1deg); }
+.board-top { display: flex; justify-content: space-between; align-items: center; color: #B8D2D9; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
+.board-status { color: #7FE2C8; display: flex; align-items: center; gap: 7px; }
+.board-svg { width: 100%; height: auto; display: block; border-radius: 12px; background: #0A202B; }
+.board-caption { display: flex; justify-content: space-between; gap: 10px; margin-top: 16px; font-size: 12px; color: #C0D2D9; }
+.board-caption strong { color: white; display: block; margin-bottom: 4px; font-size: 13px; }
+section { padding: 88px 0; }
+.section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 36px; }
+.kicker { color: var(--site-primary); text-transform: uppercase; letter-spacing: .13em; font-size: 11px; font-weight: 800; margin-bottom: 12px; }
+h2 { font-size: calc(clamp(30px, 4vw, 43px) * var(--site-heading-scale)); letter-spacing: -.045em; line-height: 1.12; margin-bottom: 0; }
+.section-head p { max-width: 420px; color: var(--text-muted); line-height: 1.7; margin-bottom: 0; }
+.services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.service-card { padding: 27px; border: 1px solid var(--line); background: var(--surface); border-radius: calc(16px * var(--site-radius-scale)); }
+.icon-box { display: grid; place-items: center; width: 46px; height: 46px; background: var(--surface-soft); color: var(--site-primary); border-radius: calc(12px * var(--site-radius-scale)); margin-bottom: 24px; }
+.icon-box svg { width: 24px; height: 24px; }
+.service-card h3 { font-size: 18px; letter-spacing: -.025em; margin-bottom: 10px; }
+.service-card p { color: var(--text-muted); line-height: 1.7; font-size: 14px; margin-bottom: 0; }
+.projects { background: var(--surface-soft); }
+.project-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.project-card { overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: calc(16px * var(--site-radius-scale)); }
+.project-art { padding: 18px; background: #102A36; min-height: 210px; display: grid; place-items: center; }
+.project-art svg { width: 100%; max-width: 290px; height: auto; }
+.project-info { padding: 23px; }
+.tag { display: inline-block; color: var(--site-primary); background: var(--surface-soft); border-radius: 99px; padding: 6px 9px; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; margin-bottom: 13px; }
+.project-info h3 { font-size: 18px; margin-bottom: 9px; }
+.project-info p { color: var(--text-muted); font-size: 13px; line-height: 1.7; margin-bottom: 0; }
+.disclaimer { color: var(--text-muted); font-size: 12px; margin-top: 18px; }
+.process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 36px; }
+.step { border-top: 1px solid var(--line); padding-top: 19px; }
+.step-num { color: var(--site-primary); font-size: 12px; font-weight: 800; letter-spacing: .12em; margin-bottom: 16px; }
+.step h3 { font-size: 16px; margin-bottom: 9px; }
+.step p { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 0; }
+.contact { background: var(--site-secondary); color: var(--site-on-secondary); }
+.contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: start; }
+.contact h2 { max-width: 460px; margin-bottom: 20px; }
+.contact-copy { color: #C5D4DD; line-height: 1.8; }
+.contact-points { display: grid; gap: 14px; margin-top: 28px; color: #D5E1E7; font-size: 13px; }
+.contact-points span { display: flex; align-items: center; gap: 10px; }
+.contact-points svg { width: 17px; height: 17px; color: #7FE2C8; }
+.contact-form { background: var(--surface); color: var(--site-on-background); border-radius: calc(18px * var(--site-radius-scale)); padding: 28px; }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: 12px; font-weight: 750; margin-bottom: 7px; }
+.field input, .field textarea, .field select { width: 100%; border: 1px solid var(--line); background: var(--site-background); color: var(--site-on-background); border-radius: calc(9px * var(--site-radius-scale)); padding: 12px 13px; outline-color: var(--site-primary); }
+.field textarea { min-height: 110px; resize: vertical; }
+.form-note { font-size: 11px; color: var(--text-muted); line-height: 1.6; margin: 12px 0 0; }
+footer { padding: 25px 0; background: light-dark(#E8EFF1, #101B23); }
+.footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--text-muted); font-size: 12px; }
+.footer-links { display: flex; gap: 18px; }
+@media (max-width: 820px) { .hero-grid,.contact-grid { grid-template-columns: 1fr; gap: 40px; } .board-card { max-width: 520px; } .services-grid,.project-grid { grid-template-columns: repeat(2,1fr); } .process-grid { grid-template-columns: repeat(2,1fr); } .section-head { align-items: start; flex-direction: column; } }
+@media (max-width: 560px) { .wrap { width: min(100% - 30px, 1120px); } .nav { min-height: 64px; } .nav-links { gap: 13px; font-size: 12px; } .nav-links a:nth-child(2) { display: none; } .nav .btn { padding: 10px 12px; font-size: 12px; } .hero { padding: 65px 0; } .hero p { font-size: 15px; } section { padding: 65px 0; } .services-grid,.project-grid { grid-template-columns: 1fr; } .process-grid { gap: 24px 18px; } .contact-form { padding: 21px; } .footer-row { align-items: flex-start; flex-direction: column; } }
+</style>
+</head>
+<body>
+<div class="site-root" data-sites-preview-theme="custom">
+<header><div class="wrap nav">
+<a class="brand" href="#home" aria-label="Wayne's services home"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3M9 9h6v6H9z"/></svg></span><span>Wayne<span style="color:var(--site-primary)">Works</span></span></a>
+<nav class="nav-links" aria-label="Main navigation"><a href="#about">About</a><a href="#services">Services</a><a href="#books">Books</a><a href="#projects">PCB Projects</a></nav>
+<a class="btn btn-primary" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+</div></header>
+<main id="home">
+<section class="hero"><div class="wrap hero-grid"><div>
+<div class="eyebrow"><span class="dot"></span> BOOK PROMOTION · PCB DESIGN</div>
+<h1>Stories deserve readers.<br>Ideas deserve design.</h1>
+<p>I’m Wayne. I help authors promote their books and support electronics projects through PCB design with KiCad. Explore my services, learn what I can help with, and get in touch to discuss your goals.</p>
+<div class="hero-actions"><a class="btn btn-primary" href="#contact">Work with me <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#services">Explore my services</a></div>
+<div class="hero-note">Book visibility · Practical PCB design · Clear communication</div>
+</div>
+<div class="board-card"><div class="board-top"><span>PCB concept / 01</span><span class="board-status"><span class="dot"></span> Layout study</span></div>
+<svg class="board-svg" viewBox="0 0 440 330" role="img" aria-label="Illustrative circuit board design"><defs><pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" fill="none" stroke="#1c4350" stroke-width=".6"/></pattern></defs><rect width="440" height="330" fill="url(#grid)"/><g fill="none" stroke="#4AC7AD" stroke-width="2" opacity=".85"><path d="M38 64H105V104H151V145H203"/><path d="M38 82H77V129H125V184H185"/><path d="M402 62H355V105H310V137H274"/><path d="M402 84H379V154H333V188H289"/><path d="M44 267H111V231H153V208H186"/><path d="M396 264H353V230H324V212H288"/><path d="M80 38V60M363 288V265M219 35V70M219 260V294"/></g><g fill="#4AC7AD"><circle cx="38" cy="64" r="4"/><circle cx="38" cy="82" r="4"/><circle cx="402" cy="62" r="4"/><circle cx="402" cy="84" r="4"/><circle cx="44" cy="267" r="4"/><circle cx="396" cy="264" r="4"/><circle cx="80" cy="38" r="4"/><circle cx="363" cy="288" r="4"/></g><rect x="165" y="104" width="111" height="117" rx="7" fill="#173F4A" stroke="#75DCC6" stroke-width="2"/><rect x="180" y="119" width="81" height="87" rx="3" fill="#0A202B" stroke="#3B8C82"/><path d="M190 132h60M190 142h60M190 152h60M190 162h60M190 172h60M190 182h60M190 192h60" stroke="#2B6C6C" stroke-width="2"/><text x="220" y="239" text-anchor="middle" fill="#A4EBDD" font-size="10" letter-spacing="2">CONTROL CORE</text><g fill="#9FB6BD" stroke="#D0E4E6" stroke-width=".7"><rect x="95" y="146" width="37" height="24" rx="3"/><rect x="303" y="148" width="38" height="24" rx="3"/><rect x="111" y="207" width="28" height="18" rx="2"/><rect x="305" y="205" width="28" height="18" rx="2"/><rect x="193" y="67" width="54" height="16" rx="3"/><rect x="192" y="255" width="55" height="16" rx="3"/></g><g fill="#E4F4F0"><circle cx="112" cy="158" r="3"/><circle cx="321" cy="160" r="3"/><circle cx="205" cy="75" r="2"/><circle cx="234" cy="75" r="2"/></g><g stroke="#B8D9D7" stroke-width="1.5"><path d="M97 151v14m6-14v14m22-14v14M305 153v14m6-14v14m22-14v14"/></g></svg>
+<div class="board-caption"><div><strong>Layout concept</strong>Signal routing & component placement</div><div style="text-align:right"><strong>Design intent</strong>Clarity · Function</div></div></div>
+</div></section>
+<section id="about"><div class="wrap"><div class="section-head"><div><div class="kicker">About Wayne</div><h2>Creative promotion.<br>Practical engineering.</h2></div><p>I work across two areas: helping authors present and promote their books, and creating PCB designs with KiCad. I aim to understand each client's goals, communicate clearly, and agree on realistic deliverables before work begins.</p></div><div class="services-grid"><article class="service-card"><div class="kicker">Book promotion</div><h3>Help books find readers</h3><p>Promotional support ideas and outreach tailored to an author's book, audience, and goals. No guaranteed sales or reviews.</p></article><article class="service-card"><div class="kicker">PCB design</div><h3>KiCad workflow</h3><p>Self-taught PCB design skills developed through online learning and personal and freelance project work.</p></article><article class="service-card"><div class="kicker">Working style</div><h3>Clear communication</h3><p>Discuss the brief, agree on scope, and keep the process and expected deliverables clear.</p></article></div></div></section>
+<section id="services"><div class="wrap"><div class="section-head"><div><div class="kicker">What I can help with</div><h2>From schematic to<br>board layout.</h2></div><p>Practical support for electronics projects, with attention to design intent, manufacturability, and clear handoff documentation.</p></div>
+<div class="services-grid">
+<article class="service-card"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4zM8 8h8v8H8zM1 8h3m-3 8h3m16-8h3m-3 8h3M8 1v3m8-3v3M8 20v3m8-3v3"/></svg></div><h3>PCB Layout & Routing</h3><p>Organized component placement, trace routing, board stack-up considerations, and layout refinement based on project requirements.</p></article>
+<article class="service-card"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v4m0 10v4M3 12h4m10 0h4M5.6 5.6l2.8 2.8m7.2 7.2 2.8 2.8m0-12.8-2.8 2.8m-7.2 7.2-2.8 2.8"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div><h3>Schematic Capture</h3><p>Turning a circuit concept into a readable schematic, with component references and connections organized for review.</p></article>
+<article class="service-card"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4zM8 8h8v8H8z"/><path d="m8 2 0 2m8-2v2M8 20v2m8-2v2M2 8h2m-2 8h2m16-8h2m-2 8h2"/><path d="m9 12 2 2 4-5"/></svg></div><h3>Design Review & Handoff</h3><p>Reviewing layout details and preparing agreed project files, notes, and manufacturing outputs for the next stage.</p></article>
+</div></div></section>
+<section class="projects" id="books"><div class="wrap"><div class="section-head"><div><div class="kicker">For authors</div><h2>Give your book a<br>clearer path to readers.</h2></div><p>Book promotion support designed around your title, genre, audience, and goals. We can discuss practical promotional ideas and a realistic plan for reaching potential readers.</p></div><div class="services-grid"><article class="service-card"><div class="kicker">01 · Positioning</div><h3>Present your book clearly</h3><p>Help refine how you introduce your book, its genre, themes, and intended audience in promotional messages.</p></article><article class="service-card"><div class="kicker">02 · Outreach</div><h3>Audience discovery</h3><p>Explore suitable reader communities and relevant channels where promotion is permitted and appropriate.</p></article><article class="service-card"><div class="kicker">03 · Promotion planning</div><h3>Build a practical plan</h3><p>Discuss promotional post ideas and next steps that fit your book and available resources. Results such as reviews or sales are not guaranteed.</p></article></div><div class="hero-actions"><a class="btn btn-primary" href="#contact">Discuss book promotion ↗</a></div></div></section>
+<section id="skills"><div class="wrap"><div class="section-head"><div><div class="kicker">Technical toolkit</div><h2>Skills and deliverables.</h2></div><p>Project scope varies, so the exact deliverables are agreed with each client before work begins.</p></div><div class="services-grid"><article class="service-card"><h3>Schematic and layout</h3><p>Schematic capture, component placement, PCB routing, and organizing circuits into clear functional sections.</p></article><article class="service-card"><h3>Design checks</h3><p>Design-rule checks, footprint and connectivity review, and identifying layout details that need attention before handoff.</p></article><article class="service-card"><h3>Manufacturing handoff</h3><p>Preparing agreed project files and manufacturing outputs, such as Gerber and drill files, when included in the project scope.</p></article></div></div></section>
+<section class="projects" id="projects"><div class="wrap"><div class="section-head"><div><div class="kicker">Selected concepts</div><h2>Example design work.</h2></div><p>These are illustrative concept projects for showing the kind of work a PCB portfolio can present. Replace them with your actual designs before sharing with clients.</p></div>
+<div class="project-grid">
+<article class="project-card"><div class="project-art"><svg viewBox="0 0 280 180" role="img" aria-label="Illustration of a sensor board"><rect x="38" y="20" width="204" height="140" rx="8" fill="#176354" stroke="#57C9A7" stroke-width="2"/><g stroke="#8CE2C5" stroke-width="2" fill="none"><path d="M50 43h42v24h31m-73 17h55v26h28m68-66h-32v29h-22m65 15h-33v25h-22M69 143v-16h27m93-91v15h-22m43 80v-19h-20"/></g><rect x="116" y="62" width="54" height="55" rx="4" fill="#0B2932" stroke="#9BE8D0"/><circle cx="143" cy="89" r="13" fill="#1B6B60" stroke="#A0F0D8"/><circle cx="143" cy="89" r="5" fill="#B8F4DE"/><g fill="#B9D4C9"><rect x="54" y="52" width="17" height="12" rx="2"/><rect x="204" y="45" width="22" height="12" rx="2"/><rect x="196" y="122" width="25" height="10" rx="2"/><rect x="56" y="119" width="20" height="11" rx="2"/></g><g fill="#D2E9E1"><circle cx="52" cy="34" r="3"/><circle cx="228" cy="34" r="3"/><circle cx="52" cy="146" r="3"/><circle cx="228" cy="146" r="3"/></g></svg></div><div class="project-info"><span class="tag">Concept project</span><h3>Sensor Interface Board</h3><p>Example of a compact sensor interface layout with a central controller and organized signal paths.</p></div></article>
+<article class="project-card"><div class="project-art"><svg viewBox="0 0 280 180" role="img" aria-label="Illustration of a microcontroller board"><rect x="36" y="24" width="208" height="132" rx="7" fill="#244A75" stroke="#80B7E9" stroke-width="2"/><g stroke="#A7D5F4" stroke-width="2" fill="none"><path d="M48 50h35v28h25m-60 19h50v24h21m94-71h-29v21h-23m53 22h-34v26h-21M140 35v20m-12 0h24M140 126v20"/></g><rect x="108" y="59" width="65" height="61" rx="4" fill="#102D4D" stroke="#9ACDF0" stroke-width="2"/><path d="M116 68h49v43h-49z" fill="#1C527A"/><g stroke="#9ACDF0" stroke-width="2"><path d="M115 54v-7m12 7v-7m12 7v-7m12 7v-7m12 7v-7m-48 73v7m12-7v7m12-7v7m12-7v7m12-7v7M101 68h-7m7 12h-7m7 12h-7m7 12h-7m79-36h7m-7 12h7m-7 12h7m-7 12h7"/></g><g fill="#D5EAF9"><rect x="51" y="39" width="18" height="8" rx="2"/><rect x="207" y="42" width="20" height="10" rx="2"/><rect x="203" y="129" width="25" height="10" rx="2"/></g></svg></div><div class="project-info"><span class="tag">Concept project</span><h3>Microcontroller Development Board</h3><p>Example board concept showing controller placement, peripheral connections, and expansion areas.</p></div></article>
+<article class="project-card"><div class="project-art"><svg viewBox="0 0 280 180" role="img" aria-label="Illustration of a power regulation board"><rect x="37" y="22" width="206" height="136" rx="8" fill="#77562C" stroke="#E5BE70" stroke-width="2"/><g fill="none" stroke="#F2D28E" stroke-width="2"><path d="M52 47h38v31h29m-67 26h54v23h28m81-80h-32v28h-22m57 23h-36v29h-20M84 35v18m112 93v-17"/></g><rect x="116" y="61" width="48" height="52" rx="3" fill="#392D1F" stroke="#F2D28E"/><g fill="#D8D5C4"><rect x="54" y="60" width="23" height="13" rx="2"/><rect x="190" y="42" width="27" height="14" rx="2"/><rect x="190" y="121" width="29" height="14" rx="2"/><rect x="68" y="124" width="24" height="13" rx="2"/></g><g fill="#F9E9C4"><circle cx="53" cy="37" r="3"/><circle cx="227" cy="37" r="3"/><circle cx="53" cy="143" r="3"/><circle cx="227" cy="143" r="3"/></g><path d="M126 72h28m-28 9h28m-28 9h28m-28 9h28" stroke="#B68A4B" stroke-width="3"/></svg></div><div class="project-info"><span class="tag">Concept project</span><h3>Power Regulation Board</h3><p>Example of a power-focused layout concept emphasizing functional grouping and accessible connections.</p></div></article>
+</div><p class="disclaimer">Portfolio integrity note: concept visuals are illustrations, not verified manufactured boards. Only describe a project as completed or tested if that is true.</p>
+</div></section>
+<section id="process"><div class="wrap"><div class="kicker">How I work</div><h2>A clear path from idea<br>to deliverables.</h2><div class="process-grid">
+<div class="step"><div class="step-num">STEP 01</div><h3>Understand</h3><p>Discuss the circuit, requirements, constraints, and intended use.</p></div>
+<div class="step"><div class="step-num">STEP 02</div><h3>Plan</h3><p>Confirm components, board constraints, and design priorities.</p></div>
+<div class="step"><div class="step-num">STEP 03</div><h3>Design</h3><p>Develop the schematic or layout and review key details with you.</p></div>
+<div class="step"><div class="step-num">STEP 04</div><h3>Deliver</h3><p>Provide the agreed files and notes for review or manufacturing.</p></div>
+</div></div></section>
+<section class="contact" id="contact"><div class="wrap contact-grid"><div><div class="eyebrow"><span class="dot"></span> LET'S WORK TOGETHER</div><h2>Have a book to promote or a PCB to design?</h2><p class="contact-copy">Tell me what you’re working on and what kind of support you need. I’ll follow up by email to discuss the scope and next steps.</p><div class="contact-points"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg> Book promotion enquiries welcome</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg> PCB design using KiCad</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg> Clear scope and communication</span></div><p class="contact-copy" style="margin-top:22px">Email: <a href="mailto:hackbath0@gmail.com">hackbath0@gmail.com</a></p></div>
+<form class="contact-form" id="contactForm"><div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Name" required></div><div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div><div class="field"><label for="service">What do you need help with?</label><select id="service" name="service"><option>Book promotion</option><option>PCB layout and routing</option><option>Schematic capture</option><option>PCB design review</option><option>Manufacturing files</option><option>Other collaboration</option></select></div><div class="field"><label for="message">Tell me about your goals</label><textarea id="message" name="message" placeholder="Share your book details or electronics project..." required></textarea></div><button class="btn btn-primary" type="submit" style="width:100%">Prepare email enquiry ↗</button><p class="form-note" id="formNote">This form opens your email app to prepare a message to hackbath0@gmail.com. You must send the email from your app.</p></form>
+</div></section>
+</main>
+<footer><div class="wrap footer-row"><a class="brand" href="#home"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3"/></svg></span><span>WayneWorks</span></a><span>© <span id="year"></span> Wayne · Book Promotion & PCB Design</span><div class="footer-links"><a href="#books">Book Promotion</a><a href="#projects">PCB Projects</a><a href="#contact">Contact</a></div></div></footer>
+</div>
+<script>
+// Email address for website enquiries.
+const CONTACT_EMAIL = "hackbath0@gmail.com";
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('contactForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const form = new FormData(this);
+  const subject = encodeURIComponent(form.get('service') + ' enquiry from ' + form.get('name'));
+  const body = encodeURIComponent('Name: ' + form.get('name') + '\nEmail: ' + form.get('email') + '\nService: ' + form.get('service') + '\n\nDetails:\n' + form.get('message'));
+  window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body;
+});
+</script>
+</body>
+</html>
