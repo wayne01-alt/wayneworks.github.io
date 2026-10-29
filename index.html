@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wayne | Book Promotion & PCB Design</title>
+<title>WayneReads | Book Promotion for First-Time Authors</title>
 <style>
 :root {
-  color-scheme: light dark;
-  --site-primary: #0F766E;
+  color-scheme: light;
+  --site-primary: #A77B2E;
   --site-on-primary: #FFFFFF;
-  --site-secondary: #102A43;
-  --site-on-secondary: #FFFFFF;
-  --site-background: #F4F7F8;
-  --site-on-background: #172B3A;
-  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-secondary: #211B18;
+  --site-on-secondary: #FFF9EE;
+  --site-background: #F8F1E5;
+  --site-on-background: #28211B;
+  --site-font-body: Georgia, "Times New Roman", serif;
+  --site-font-heading: Georgia, "Times New Roman", serif;
   --site-heading-scale: 1;
   --site-spacing-scale: 1;
   --site-radius-scale: 1;
   --site-decoration-opacity: 1;
-  --surface: light-dark(#FFFFFF, #17232D);
-  --surface-soft: light-dark(#E8F0F1, #20313D);
-  --text-muted: light-dark(#536777, #B3C1CA);
-  --line: light-dark(#D7E1E5, #344651);
+  --surface: #FFF9EF;
+  --surface-soft: #EFE2CC;
+  --text-muted: #746556;
+  --line: #D9C8AD;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -31,7 +31,7 @@ body { margin: 0; font-family: var(--site-font-body); background: var(--site-bac
 a { color: inherit; text-decoration: none; }
 button, input, textarea { font: inherit; }
 .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
-header { position: sticky; top: 0; z-index: 10; background: light-dark(rgba(244,247,248,.94), rgba(15,25,33,.94)); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+header { position: sticky; top: 0; z-index: 10; background: rgba(248,241,229,.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
 .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: -.03em; }
 .brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: calc(10px * var(--site-radius-scale)); color: var(--site-on-primary); background: var(--site-primary); }
@@ -45,14 +45,14 @@ header { position: sticky; top: 0; z-index: 10; background: light-dark(rgba(244,
 .hero { position: relative; padding: clamp(70px, 10vw, 126px) 0 88px; background: var(--site-secondary); color: var(--site-on-secondary); }
 .hero:after { content: ""; position: absolute; right: -100px; top: -160px; width: 460px; height: 460px; border: 1px solid rgba(255,255,255,.14); border-radius: 50%; box-shadow: 0 0 0 55px rgba(255,255,255,.035), 0 0 0 110px rgba(255,255,255,.025); opacity: var(--site-decoration-opacity); pointer-events: none; }
 .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 58px; }
-.eyebrow { display: inline-flex; align-items: center; gap: 9px; color: light-dark(#91E5D9, #91E5D9); text-transform: uppercase; letter-spacing: .13em; font-size: 11px; font-weight: 800; }
-.dot { width: 7px; height: 7px; border-radius: 50%; background: #65D7C5; }
+.eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #D8B56E; text-transform: uppercase; letter-spacing: .13em; font-size: 11px; font-weight: 800; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #C39A50; }
 h1,h2,h3,p { margin-top: 0; }
 h1 { max-width: 700px; margin: 20px 0; font-family: var(--site-font-heading); font-size: calc(clamp(42px, 6vw, 72px) * var(--site-heading-scale)); line-height: 1.04; letter-spacing: -.055em; }
-.hero p { max-width: 570px; font-size: 17px; line-height: 1.8; color: #D0DCE4; }
+.hero p { max-width: 570px; font-size: 17px; line-height: 1.8; color: #E8DCCB; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .hero .btn-outline { background: transparent; border-color: rgba(255,255,255,.3); color: white; }
-.hero-note { margin-top: 23px; font-size: 12px; color: #AEBFCB; }
+.hero-note { margin-top: 23px; font-size: 12px; color: #D5C6B2; }
 .board-card { background: #132F3B; border: 1px solid rgba(155,231,218,.25); border-radius: calc(22px * var(--site-radius-scale)); padding: 22px; box-shadow: 0 24px 70px rgba(0,0,0,.25); transform: rotate(1deg); }
 .board-top { display: flex; justify-content: space-between; align-items: center; color: #B8D2D9; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
 .board-status { color: #7FE2C8; display: flex; align-items: center; gap: 7px; }
@@ -98,40 +98,59 @@ h2 { font-size: calc(clamp(30px, 4vw, 43px) * var(--site-heading-scale)); letter
 .field input, .field textarea, .field select { width: 100%; border: 1px solid var(--line); background: var(--site-background); color: var(--site-on-background); border-radius: calc(9px * var(--site-radius-scale)); padding: 12px 13px; outline-color: var(--site-primary); }
 .field textarea { min-height: 110px; resize: vertical; }
 .form-note { font-size: 11px; color: var(--text-muted); line-height: 1.6; margin: 12px 0 0; }
-footer { padding: 25px 0; background: light-dark(#E8EFF1, #101B23); }
+footer { padding: 25px 0; background: #EFE2CC; }
 .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--text-muted); font-size: 12px; }
 .footer-links { display: flex; gap: 18px; }
 @media (max-width: 820px) { .hero-grid,.contact-grid { grid-template-columns: 1fr; gap: 40px; } .board-card { max-width: 520px; } .services-grid,.project-grid { grid-template-columns: repeat(2,1fr); } .process-grid { grid-template-columns: repeat(2,1fr); } .section-head { align-items: start; flex-direction: column; } }
 @media (max-width: 560px) { .wrap { width: min(100% - 30px, 1120px); } .nav { min-height: 64px; } .nav-links { gap: 13px; font-size: 12px; } .nav-links a:nth-child(2) { display: none; } .nav .btn { padding: 10px 12px; font-size: 12px; } .hero { padding: 65px 0; } .hero p { font-size: 15px; } section { padding: 65px 0; } .services-grid,.project-grid { grid-template-columns: 1fr; } .process-grid { gap: 24px 18px; } .contact-form { padding: 21px; } .footer-row { align-items: flex-start; flex-direction: column; } }
+/* WayneReads: elegant book-promotion-only design */
+#services, #skills, #projects, #process, .board-card { display: none !important; }
+#about .services-grid article:nth-child(2) { display: none; }
+.hero-grid { grid-template-columns: 1fr; }
+.hero-grid > div:first-child { max-width: 760px; }
+.brand-mark { border-radius: 50%; }
+.brand-mark svg { display: none; }
+.brand-mark:after { content: "W"; font-family: Georgia, serif; font-size: 23px; }
+.btn { border-radius: 3px; letter-spacing: .02em; }
+.service-card { border-radius: 3px; }
+.icon-box { border-radius: 3px; }
+.hero { background: var(--site-background); color: var(--site-on-background); }
+.hero p { color: var(--text-muted); }
+.hero .btn-outline { background: var(--surface); border-color: var(--line); color: var(--site-on-background); }
+.hero-note { color: var(--text-muted); }
+.hero:after { border-color: rgba(167,123,46,.15); box-shadow: 0 0 0 55px rgba(167,123,46,.045), 0 0 0 110px rgba(167,123,46,.03); }
+.contact-copy { color: #E8DCCB; }
+.contact-points { color: #E8DCCB; }
+.contact-points svg { color: #D8B56E; }
 </style>
 </head>
 <body>
 <div class="site-root" data-sites-preview-theme="custom">
 <header><div class="wrap nav">
-<a class="brand" href="#home" aria-label="Wayne's services home"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3M9 9h6v6H9z"/></svg></span><span>Wayne<span style="color:var(--site-primary)">Works</span></span></a>
-<nav class="nav-links" aria-label="Main navigation"><a href="#about">About</a><a href="#services">Services</a><a href="#books">Books</a><a href="#projects">PCB Projects</a></nav>
+<a class="brand" href="#home" aria-label="WayneReads home"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3M9 9h6v6H9z"/></svg></span><span>Wayne<span style="color:var(--site-primary)">Reads</span></span></a>
+<nav class="nav-links" aria-label="Main navigation"><a href="#about">About</a><a href="#books">Services</a><a href="#books">Promotion process</a></nav>
 <a class="btn btn-primary" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
 </div></header>
 <main id="home">
 <section class="hero"><div class="wrap hero-grid"><div>
-<div class="eyebrow"><span class="dot"></span> BOOK PROMOTION · PCB DESIGN</div>
-<h1>Stories deserve readers.<br>Ideas deserve design.</h1>
-<p>I’m Wayne. I help authors promote their books and support electronics projects through PCB design with KiCad. Explore my services, learn what I can help with, and get in touch to discuss your goals.</p>
-<div class="hero-actions"><a class="btn btn-primary" href="#contact">Work with me <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#services">Explore my services</a></div>
-<div class="hero-note">Book visibility · Practical PCB design · Clear communication</div>
+<div class="eyebrow"><span class="dot"></span> A THOUGHTFUL START FOR NEW AUTHORS</div>
+<h1>Your first book deserves to be discovered.</h1>
+<p>I’m Wayne. WayneReads helps first-time authors introduce their books, find relevant reader communities, and plan thoughtful promotional outreach. If you’re preparing to launch your first story, we can build a practical plan around your book, audience, and goals.</p>
+<div class="hero-actions"><a class="btn btn-primary" href="#contact">Promote your book <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#books">Explore services</a></div>
+<div class="hero-note">Support for debut authors · Thoughtful outreach · Clear communication</div>
 </div>
 <div class="board-card"><div class="board-top"><span>PCB concept / 01</span><span class="board-status"><span class="dot"></span> Layout study</span></div>
 <svg class="board-svg" viewBox="0 0 440 330" role="img" aria-label="Illustrative circuit board design"><defs><pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" fill="none" stroke="#1c4350" stroke-width=".6"/></pattern></defs><rect width="440" height="330" fill="url(#grid)"/><g fill="none" stroke="#4AC7AD" stroke-width="2" opacity=".85"><path d="M38 64H105V104H151V145H203"/><path d="M38 82H77V129H125V184H185"/><path d="M402 62H355V105H310V137H274"/><path d="M402 84H379V154H333V188H289"/><path d="M44 267H111V231H153V208H186"/><path d="M396 264H353V230H324V212H288"/><path d="M80 38V60M363 288V265M219 35V70M219 260V294"/></g><g fill="#4AC7AD"><circle cx="38" cy="64" r="4"/><circle cx="38" cy="82" r="4"/><circle cx="402" cy="62" r="4"/><circle cx="402" cy="84" r="4"/><circle cx="44" cy="267" r="4"/><circle cx="396" cy="264" r="4"/><circle cx="80" cy="38" r="4"/><circle cx="363" cy="288" r="4"/></g><rect x="165" y="104" width="111" height="117" rx="7" fill="#173F4A" stroke="#75DCC6" stroke-width="2"/><rect x="180" y="119" width="81" height="87" rx="3" fill="#0A202B" stroke="#3B8C82"/><path d="M190 132h60M190 142h60M190 152h60M190 162h60M190 172h60M190 182h60M190 192h60" stroke="#2B6C6C" stroke-width="2"/><text x="220" y="239" text-anchor="middle" fill="#A4EBDD" font-size="10" letter-spacing="2">CONTROL CORE</text><g fill="#9FB6BD" stroke="#D0E4E6" stroke-width=".7"><rect x="95" y="146" width="37" height="24" rx="3"/><rect x="303" y="148" width="38" height="24" rx="3"/><rect x="111" y="207" width="28" height="18" rx="2"/><rect x="305" y="205" width="28" height="18" rx="2"/><rect x="193" y="67" width="54" height="16" rx="3"/><rect x="192" y="255" width="55" height="16" rx="3"/></g><g fill="#E4F4F0"><circle cx="112" cy="158" r="3"/><circle cx="321" cy="160" r="3"/><circle cx="205" cy="75" r="2"/><circle cx="234" cy="75" r="2"/></g><g stroke="#B8D9D7" stroke-width="1.5"><path d="M97 151v14m6-14v14m22-14v14M305 153v14m6-14v14m22-14v14"/></g></svg>
 <div class="board-caption"><div><strong>Layout concept</strong>Signal routing & component placement</div><div style="text-align:right"><strong>Design intent</strong>Clarity · Function</div></div></div>
 </div></section>
-<section id="about"><div class="wrap"><div class="section-head"><div><div class="kicker">About Wayne</div><h2>Creative promotion.<br>Practical engineering.</h2></div><p>I work across two areas: helping authors present and promote their books, and creating PCB designs with KiCad. I aim to understand each client's goals, communicate clearly, and agree on realistic deliverables before work begins.</p></div><div class="services-grid"><article class="service-card"><div class="kicker">Book promotion</div><h3>Help books find readers</h3><p>Promotional support ideas and outreach tailored to an author's book, audience, and goals. No guaranteed sales or reviews.</p></article><article class="service-card"><div class="kicker">PCB design</div><h3>KiCad workflow</h3><p>Self-taught PCB design skills developed through online learning and personal and freelance project work.</p></article><article class="service-card"><div class="kicker">Working style</div><h3>Clear communication</h3><p>Discuss the brief, agree on scope, and keep the process and expected deliverables clear.</p></article></div></div></section>
+<section id="about"><div class="wrap"><div class="section-head"><div><div class="kicker">About WayneReads</div><h2>A supportive first step<br>for your author journey.</h2></div><p>Launching your first book can feel like a big step. I help new authors think through how to introduce their book, where suitable readers gather, and how to approach promotion with a clear, realistic plan. We’ll discuss your genre, goals, budget, and the activities that make sense for you.</p></div><div class="services-grid"><article class="service-card"><div class="kicker">For debut authors</div><h3>Start with a clear plan</h3><p>Practical promotional ideas and reader outreach tailored to your book. Sales, reviews, and audience growth are never guaranteed.</p></article><article class="service-card"><div class="kicker">Our approach</div><h3>Honest, clear support</h3><p>We’ll discuss your needs, agree on deliverables, and keep expectations transparent from the start.</p></article></div></div></section>
 <section id="services"><div class="wrap"><div class="section-head"><div><div class="kicker">What I can help with</div><h2>From schematic to<br>board layout.</h2></div><p>Practical support for electronics projects, with attention to design intent, manufacturability, and clear handoff documentation.</p></div>
 <div class="services-grid">
 <article class="service-card"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4zM8 8h8v8H8zM1 8h3m-3 8h3m16-8h3m-3 8h3M8 1v3m8-3v3M8 20v3m8-3v3"/></svg></div><h3>PCB Layout & Routing</h3><p>Organized component placement, trace routing, board stack-up considerations, and layout refinement based on project requirements.</p></article>
 <article class="service-card"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v4m0 10v4M3 12h4m10 0h4M5.6 5.6l2.8 2.8m7.2 7.2 2.8 2.8m0-12.8-2.8 2.8m-7.2 7.2-2.8 2.8"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div><h3>Schematic Capture</h3><p>Turning a circuit concept into a readable schematic, with component references and connections organized for review.</p></article>
 <article class="service-card"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4zM8 8h8v8H8z"/><path d="m8 2 0 2m8-2v2M8 20v2m8-2v2M2 8h2m-2 8h2m16-8h2m-2 8h2"/><path d="m9 12 2 2 4-5"/></svg></div><h3>Design Review & Handoff</h3><p>Reviewing layout details and preparing agreed project files, notes, and manufacturing outputs for the next stage.</p></article>
 </div></div></section>
-<section class="projects" id="books"><div class="wrap"><div class="section-head"><div><div class="kicker">For authors</div><h2>Give your book a<br>clearer path to readers.</h2></div><p>Book promotion support designed around your title, genre, audience, and goals. We can discuss practical promotional ideas and a realistic plan for reaching potential readers.</p></div><div class="services-grid"><article class="service-card"><div class="kicker">01 · Positioning</div><h3>Present your book clearly</h3><p>Help refine how you introduce your book, its genre, themes, and intended audience in promotional messages.</p></article><article class="service-card"><div class="kicker">02 · Outreach</div><h3>Audience discovery</h3><p>Explore suitable reader communities and relevant channels where promotion is permitted and appropriate.</p></article><article class="service-card"><div class="kicker">03 · Promotion planning</div><h3>Build a practical plan</h3><p>Discuss promotional post ideas and next steps that fit your book and available resources. Results such as reviews or sales are not guaranteed.</p></article></div><div class="hero-actions"><a class="btn btn-primary" href="#contact">Discuss book promotion ↗</a></div></div></section>
+<section class="projects" id="books"><div class="wrap"><div class="section-head"><div><div class="kicker">Ways I can help</div><h2>Launch your first book<br>with a thoughtful plan.</h2></div><p>Support is tailored to your title, genre, audience, and goals. We’ll focus on practical steps that fit your book, schedule, and resources.</p></div><div class="services-grid"><article class="service-card"><div class="kicker">01 · Book presentation</div><h3>Tell your story clearly</h3><p>Prepare a concise introduction that communicates your book’s genre, themes, and intended audience.</p></article><article class="service-card"><div class="kicker">02 · Reader discovery</div><h3>Find your readers</h3><p>Explore relevant reader communities and channels where your genre fits and promotion is permitted.</p></article><article class="service-card"><div class="kicker">03 · Launch planning</div><h3>Plan your outreach</h3><p>Build achievable promotional post ideas and outreach steps. Sales, reviews, and audience growth are never guaranteed.</p></article></div><div class="hero-actions"><a class="btn btn-primary" href="#contact">Talk about your book ↗</a></div></div></section>
 <section id="skills"><div class="wrap"><div class="section-head"><div><div class="kicker">Technical toolkit</div><h2>Skills and deliverables.</h2></div><p>Project scope varies, so the exact deliverables are agreed with each client before work begins.</p></div><div class="services-grid"><article class="service-card"><h3>Schematic and layout</h3><p>Schematic capture, component placement, PCB routing, and organizing circuits into clear functional sections.</p></article><article class="service-card"><h3>Design checks</h3><p>Design-rule checks, footprint and connectivity review, and identifying layout details that need attention before handoff.</p></article><article class="service-card"><h3>Manufacturing handoff</h3><p>Preparing agreed project files and manufacturing outputs, such as Gerber and drill files, when included in the project scope.</p></article></div></div></section>
 <section class="projects" id="projects"><div class="wrap"><div class="section-head"><div><div class="kicker">Selected concepts</div><h2>Example design work.</h2></div><p>These are illustrative concept projects for showing the kind of work a PCB portfolio can present. Replace them with your actual designs before sharing with clients.</p></div>
 <div class="project-grid">
@@ -146,11 +165,11 @@ footer { padding: 25px 0; background: light-dark(#E8EFF1, #101B23); }
 <div class="step"><div class="step-num">STEP 03</div><h3>Design</h3><p>Develop the schematic or layout and review key details with you.</p></div>
 <div class="step"><div class="step-num">STEP 04</div><h3>Deliver</h3><p>Provide the agreed files and notes for review or manufacturing.</p></div>
 </div></div></section>
-<section class="contact" id="contact"><div class="wrap contact-grid"><div><div class="eyebrow"><span class="dot"></span> LET'S WORK TOGETHER</div><h2>Have a book to promote or a PCB to design?</h2><p class="contact-copy">Tell me what you’re working on and what kind of support you need. I’ll follow up by email to discuss the scope and next steps.</p><div class="contact-points"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg> Book promotion enquiries welcome</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg> PCB design using KiCad</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg> Clear scope and communication</span></div><p class="contact-copy" style="margin-top:22px">Email: <a href="mailto:hackbath0@gmail.com">hackbath0@gmail.com</a></p></div>
-<form class="contact-form" id="contactForm"><div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Name" required></div><div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div><div class="field"><label for="service">What do you need help with?</label><select id="service" name="service"><option>Book promotion</option><option>PCB layout and routing</option><option>Schematic capture</option><option>PCB design review</option><option>Manufacturing files</option><option>Other collaboration</option></select></div><div class="field"><label for="message">Tell me about your goals</label><textarea id="message" name="message" placeholder="Share your book details or electronics project..." required></textarea></div><button class="btn btn-primary" type="submit" style="width:100%">Prepare email enquiry ↗</button><p class="form-note" id="formNote">This form opens your email app to prepare a message to hackbath0@gmail.com. You must send the email from your app.</p></form>
+<section class="contact" id="contact"><div class="wrap contact-grid"><div><div class="eyebrow"><span class="dot"></span> YOUR BOOK'S NEXT CHAPTER</div><h2>Let’s talk about your first book.</h2><p class="contact-copy">Tell me your book title, genre, launch stage, and what kind of promotional help you’re looking for. I’ll follow up by email to discuss suitable next steps.</p><div class="contact-points"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg> Support for first-time authors</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg> Thoughtful, relevant outreach</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg> Honest expectations and clear scope</span></div><p class="contact-copy" style="margin-top:22px">Email: <a href="mailto:hackbath0@gmail.com">hackbath0@gmail.com</a></p></div>
+<form class="contact-form" id="contactForm"><div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Your name" required></div><div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div><div class="field"><label for="service">Where are you in your book journey?</label><select id="service" name="service"><option>Planning my first book launch</option><option>My book is already published</option><option>Preparing my book for publication</option><option>Exploring promotion options</option></select></div><div class="field"><label for="message">Tell me about your book</label><textarea id="message" name="message" placeholder="Book title, genre, launch date (if known), and what you hope to achieve..." required></textarea></div><button class="btn btn-primary" type="submit" style="width:100%">Prepare email enquiry ↗</button><p class="form-note" id="formNote">This form opens your email app to prepare a message to hackbath0@gmail.com. You must send the email from your app.</p></form>
 </div></section>
 </main>
-<footer><div class="wrap footer-row"><a class="brand" href="#home"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3"/></svg></span><span>WayneWorks</span></a><span>© <span id="year"></span> Wayne · Book Promotion & PCB Design</span><div class="footer-links"><a href="#books">Book Promotion</a><a href="#projects">PCB Projects</a><a href="#contact">Contact</a></div></div></footer>
+<footer><div class="wrap footer-row"><a class="brand" href="#home"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3"/></svg></span><span>WayneReads</span></a><span>© <span id="year"></span> Wayne · Book Promotion for New Authors</span><div class="footer-links"><a href="#books">Services</a><a href="#about">About</a><a href="#contact">Contact</a></div></div></footer>
 </div>
 <script>
 // Email address for website enquiries.
